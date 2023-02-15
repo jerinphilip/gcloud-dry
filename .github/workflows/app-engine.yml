@@ -16,6 +16,9 @@ jobs:
       uses: 'google-github-actions/auth@v1'
       with:
         credentials_json: ${{ secrets.GCLOUD_CREDENTIALS_JSON }}
+    - name: "verify YML present"
+      run: |
+        ls app.prod.yaml
 
     - id: 'deploy'
       uses: 'google-github-actions/deploy-appengine@v1'
