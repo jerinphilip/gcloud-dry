@@ -1,5 +1,11 @@
+name: "deploy"
+
+on: 
+  push:
+    branches: [main]
+
 jobs:
-  job_id:
+  gapp-engine:
     permissions:
       contents: 'read'
       id-token: 'write'
@@ -15,8 +21,3 @@ jobs:
       with:
         deliverables: app.yaml
         
-
-    # Example of using the output
-    - id: 'test'
-      run: 'curl "${{ steps.deploy.outputs.url }}"'
-
