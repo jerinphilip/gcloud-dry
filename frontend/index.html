@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title> main </title>
+  </head>
+  <body>
+    <div id="message"> </div>
+    <script type="text/javascript">
+      function update() {
+        var response = JSON.parse(this.responseText);
+        var target = document.getElementById("message");
+        target.innerHTML = response["message"];
+        console.log(message);
+      }
+
+      const request = new XMLHttpRequest();
+      request.addEventListener("load", update);
+      request.open("GET", "/api/");
+      request.send();
+    </script>
+  </body>
+</html>
+
+
