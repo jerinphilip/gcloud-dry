@@ -2,7 +2,7 @@ name: "deploy"
 
 on: 
   push:
-    branches: [main]
+    branches: [main, prod]
 
 jobs:
   gapp-engine:
@@ -10,6 +10,9 @@ jobs:
     permissions:
       contents: 'read'
       id-token: 'write'
+    
+    environment:
+      name: ${{ github.ref }}
 
     steps:
     - name: "Checkout repository"
@@ -24,7 +27,7 @@ jobs:
       uses: 'google-github-actions/deploy-appengine@v1'
       with:
         working_directory: ${{ github.workspace }}
-        deliverables: .google-appengine/main.yaml
+        deliverables: ${{ GOOGLE_APPENGINE_YAML_PATH }}
         
     - name: "Check deployment"
       run: 'curl "${{ steps.deploy.outputs.url }}"'

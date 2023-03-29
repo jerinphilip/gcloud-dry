@@ -1,3 +1,4 @@
 runtime: python39
+service: staging
 entrypoint: gunicorn -b :$PORT --workers 2 --worker-class uvicorn.workers.UvicornWorker app:app
 instance_class: F4
